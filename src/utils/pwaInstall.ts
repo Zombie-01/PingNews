@@ -1,36 +1,33 @@
-interface BeforeInstallPromptEvent extends Event {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// utils/pwaInstall.ts
+
+export interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 export const initInstallPrompt = (): void => {
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67+ from automatically showing the prompt
+  window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
-    // Stash the event so it can be triggered later
     deferredPrompt = e as BeforeInstallPromptEvent;
+    (window as any).deferredPrompt = deferredPrompt; // Optional global access
   });
 };
 
 export const showInstallPrompt = async (): Promise<boolean> => {
-  if (!deferredPrompt) {
-    return false;
-  }
+  const prompt = deferredPrompt || (window as any).deferredPrompt;
+  if (!prompt) return false;
 
-  // Show the install prompt
-  deferredPrompt.prompt();
-
-  // Wait for the user to respond to the prompt
-  const { outcome } = await deferredPrompt.userChoice;
-  
-  // We no longer need the prompt
+  prompt.prompt();
+  const { outcome } = await prompt.userChoice;
   deferredPrompt = null;
+  (window as any).deferredPrompt = null;
 
-  return outcome === 'accepted';
+  return outcome === "accepted";
 };
 
 export const isAppInstalled = (): boolean => {
-  return window.matchMedia('(display-mode: standalone)').matches;
+  return window.matchMedia("(display-mode: standalone)").matches;
 };
