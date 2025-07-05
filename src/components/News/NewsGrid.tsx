@@ -65,7 +65,13 @@ const NewsGrid: React.FC<NewsGridProps> = ({ newsItems, isLoading }) => {
       {/* Other News */}
       <div className="space-y-4">
         {otherNews.map(news => (
-          <div key={news.id} className="flex gap-4 bg-white rounded-xl p-4 border border-gray-100">
+          <div
+            key={news.id}
+            className="flex gap-4 bg-white rounded-xl p-4 border border-gray-100 cursor-pointer hover:shadow"
+            onClick={() => {
+              window.location.href = '/a/2024/06/c419225e-cfdb-4dd4-85a8-baaca1daf423';
+            }}
+          >
             <img 
               src={`https://source.unsplash.com/200x200/?${news.category}`}
               alt={news.title}

@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Layout/Navbar';
+import NewsDetailPage from './pages/page';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -35,6 +36,10 @@ function AppContent() {
               <SettingsPage />
             </PrivateRoute>
           } 
+        />
+        <Route
+          path="/a/2024/06/c419225e-cfdb-4dd4-85a8-baaca1daf423"
+          element={<NewsDetailPage />}
         />
       </Routes>
     </div>
