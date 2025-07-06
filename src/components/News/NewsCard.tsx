@@ -12,7 +12,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
     : news.body;
 
   // Use static values for year, day, and uuid
-  const detailUrl = `/a/2024/06/c419225e-cfdb-4dd4-85a8-baaca1daf423`;
+  const detailUrl = `/a/2024/06/525bb1d8-e8fa-4053-a6da-a5ba6cfe8a2a`;
 
   return (
     <div className="bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-100">

@@ -27,7 +27,7 @@ function AppContent() {
           } 
         />
         <Route
-          path="/a/2024/06/c419225e-cfdb-4dd4-85a8-baaca1daf423"
+          path="/a/2024/06/525bb1d8-e8fa-4053-a6da-a5ba6cfe8a2a"
           element={<NewsDetailPage />}
         />
       </Routes>

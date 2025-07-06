@@ -69,7 +69,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ newsItems, isLoading }) => {
             key={news.id}
             className="flex gap-4 bg-white rounded-xl p-4 border border-gray-100 cursor-pointer hover:shadow"
             onClick={() => {
-              window.location.href = '/a/2024/06/c419225e-cfdb-4dd4-85a8-baaca1daf423';
+              window.location.href = '/a/2024/06/525bb1d8-e8fa-4053-a6da-a5ba6cfe8a2a';
             }}
           >
             <img 
